@@ -483,3 +483,169 @@ let user = {
   const clonedUser = JSON.parse(JSON.stringify(user));
   user.name = "Akshai";
   ```
+
+# `this` keyword
+
+The this keyword refers to the context where a piece of code, such as a function's body, is supposed to run. Most typically, it is used in object methods, where this refers to the object that the method is attached to, thus allowing the same method to be reused on different objects.
+
+${\textsf{\color{khaki}Guess\ the\ output}}$
+```javascript
+const user = {
+  firstName: "Akshai",
+  getName() {
+    const firstName = "TR";
+    return this.firstName;
+  },
+};
+
+console.log(user.getName());
+```
+
+${\textsf{\color{khaki}Guess\ the\ output}}$
+```javascript
+function createUser() {
+  return {
+    name: "John",
+    ref: this,
+  };
+}
+
+const user = createUser();
+console.log(user.ref.name);
+```
+
+${\textsf{\color{khaki}Guess\ the\ output}}$
+```javascript
+const user = {
+  name: "Akshai",
+  logName() {
+    console.log(this.name);
+  },
+};
+
+setTimeout(user.logName, 1000);
+
+setTimeout(function () {
+  user.logName();
+}, 1000);
+```
+
+${\textsf{\color{khaki}Guess\ the\ output}}$
+```javascript
+var length = 4;
+
+function callback() {
+  console.log(this.length);
+}
+
+const obj = {
+  length: 5,
+  method(func) {
+    func();
+  },
+};
+
+obj.method(callback);
+```
+
+${\textsf{\color{khaki}Guess\ the\ output}}$
+```javascript
+var length = 4;
+
+function callback() {
+  console.log(this.length);
+}
+
+const obj = {
+  length: 5,
+  method() {
+    console.log(arguments);
+    arguments[0]();
+  },
+};
+
+obj.method(callback, 2, 3);
+```
+
+# Call, apply and bind
+
+The `call` method in JavaScript is used to invoke a function with a specified `this` context and arguments individually. It accepts the context object as the first argument followed by individual arguments.
+
+```javascript
+var user = {
+  name: "Akshai",
+};
+
+function greeting(greetingText) {
+  return `${greetingText} ${this.name}!!`;
+}
+
+console.log(greeting.call(user, "Hello"));
+```
+
+The `apply` method in JavaScript is similar to call but accepts arguments as an array. It is used to invoke a function with a specified context and an array of arguments.
+
+```javascript
+var user = {
+  name: "Akshai",
+};
+
+function greeting(greetingText) {
+  return `${greetingText} ${this.name}!!`;
+}
+
+console.log(greeting.apply(user, ["Hello"]));
+```
+
+The bind method in JavaScript is used to create a new function with a specified `this` context. It doesn't immediately execute the function but return a new function that can be invoked later.
+
+```javascript
+var user = {
+  name: "Akshai",
+};
+
+function greeting(greetingText) {
+  return `${greetingText} ${this.name}!!`;
+}
+
+const greetUser = greeting.bind(user);
+
+console.log(greetUser("Hello"));
+```
+
+${\textsf{\color{khaki}Guess\ the\ output}}$
+```javascript
+const age = 19;
+
+var person = {
+  name: "Akshai",
+  age: 28,
+  getAge: function () {
+    console.log(this.age);
+  },
+};
+
+var person2 = {
+  age: 24,
+};
+
+person.getAge.call(person2);
+```
+
+${\textsf{\color{khaki}Guess\ the\ output}}$
+```javascript
+const status = 1;
+
+setTimeout(() => {
+  const status = 2;
+  const data = {
+    status: 3,
+    getStatus() {
+      return this.status;
+    },
+  };
+
+  console.log(data.getStatus());
+  console.log(data.getStatus.call(this));
+});
+```
