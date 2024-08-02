@@ -213,3 +213,90 @@ And you can use arrow functions in any of the following cases:
 📢 NOTES: 
 
 > In programming, a function is a block of reusable code that performs a certain task. Functions can take input arguments and return output values. On the other hand, a method is a function that is associated with an object in object-oriented programming. Methods are functions that are called on objects and can modify or access the object's properties.
+
+# Closures
+
+A closure is a JavaScript feature that allows a function to remember and access its lexical scope even when the function is executed outside that scope.
+
+```javascript
+function init() {
+  var name = "Mozilla"; // name is a local variable created by init
+  function displayName() {
+    // displayName() is the inner function, that forms the closure
+    console.log(name); // use variable declared in the parent function
+  }
+  displayName();
+}
+
+init();
+```
+
+📢 NOTES: 
+
+> In JavaScript, a closure is created every time a function is created, at the function creation time.
+
+### Lexical Scope
+
+Lexical scoping describes how a parser resolves variable names when functions are nested. The word lexical refers to the fact that lexical scoping uses the location where a variable is declared within the source code to determine where that variable is available. Nested functions have access to variables declared in their outer scope.
+
+### Why do we need closures?
+
+- Closures makes it possible for functions to have private variables
+- JavaScript closures are used to control what is and what isn't in the scope of a particular function
+- Control which variables are shared with sibling functions
+- Closures can be used for optimizing the runtime of a function
+
+${\textsf{\color{khaki}Guess\ the\ output}}$
+
+```javascript
+for (var i = 0; i < 5; i++) {
+  function print(index) {
+    setTimeout(function log() {
+      console.log(index);
+    }, index * 1000);
+  }
+  print(i);
+}
+```
+
+### Creating a private counter using closure
+
+```javascript
+function counter() {
+  let counter = 0;
+
+  function add(increment) {
+    counter += increment;
+  }
+
+  function get() {
+    return `Counter = ${counter}`;
+  }
+
+  return { add, get };
+}
+```
+
+### Module pattern
+
+The module pattern uses an IIFE to encapsulate private variables and functions, exposing only a public interface. The module pattern is a design pattern used for improving the maintainability and reusability of the code by creating public and private access levels. The module pattern keeps the privacy of the state and organizes using closures. It protects the pieces from the global scope, avoiding possible errors and conflicts.
+
+```javascript
+const createSupplier = (function () {
+  const name = "General Motors";
+  const field = "automobile";
+
+  return {
+    name,
+    field,
+  };
+})();
+
+createSupplier.name;
+createSupplier.field;
+```
+
+### Closures vs Scopes
+
+- Closure refers to the ability of a function to retain access to variables from its lexical scope even after the scope has been closed
+- Scope refers to the visibility and accessbility of variables within a specified context, such as global scope, function scope or block scope
