@@ -421,3 +421,65 @@ person = null;
 
 console.log(members);
 ```
+
+${\textsf{\color{khaki}Guess\ the\ output}}$
+```javascript
+const values = {
+  number: 10,
+};
+
+const multiply = (x = { ...values }) => {
+  console.log(x.number *= 2);
+};
+
+multiply();
+multiply();
+multiply(values);
+multiply(values);
+```
+
+${\textsf{\color{khaki}Guess\ the\ output}}$
+```javascript
+function changeAgeAndReference(person) {
+  person.age = 25;
+  person = {
+    name: "John",
+    age: 50,
+  };
+  return person;
+}
+
+const person1 = {
+  name: "Alex",
+  age: 30,
+};
+
+const person2 = changeAgeAndReference(person1);
+
+console.log(person1);
+console.log(person2);
+```
+
+### How to clone/deep copy an object in JavaScript?
+
+```javascript
+let user = {
+  name: "user",
+  age: 28,
+};
+```
+
+- Using Spread Operator
+  ```javascript
+  const clonedUser = { ...user, name: "Akshai" };
+  ```
+- Using Object.assign() method
+  ```javascript
+  const clonedUser = Object.assign({}, user);
+  user.name = "Akshai";
+  ```
+- Using JSON.parse() and JSON.stringify()
+  ```javascript
+  const clonedUser = JSON.parse(JSON.stringify(user));
+  user.name = "Akshai";
+  ```
