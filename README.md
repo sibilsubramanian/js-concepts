@@ -80,7 +80,6 @@ In languages like JavaScript, functions can be treated as any other variables. F
 
 
 ${\textsf{\color{khaki}Guess\ the\ output}}$
-
 ```javascript
 (function (x) {
   return (function (y) {
@@ -90,7 +89,6 @@ ${\textsf{\color{khaki}Guess\ the\ output}}$
 ```
 
 ${\textsf{\color{khaki}Guess\ the\ output}}$
-
 ```javascript
 for (var i = 0; i < 5; i++) {
   setTimeout(function () {
@@ -100,7 +98,6 @@ for (var i = 0; i < 5; i++) {
 ```
 
 ${\textsf{\color{khaki}Guess\ the\ output}}$
-
 ```javascript
 for (let i = 0; i < 5; i++) {
   setTimeout(function () {
@@ -110,7 +107,6 @@ for (let i = 0; i < 5; i++) {
 ```
 
 ${\textsf{\color{khaki}Guess\ the\ output}}$
-
 ```javascript
 var num = 21;
 var func = function() {
@@ -161,7 +157,6 @@ In the example above, 5 and 10 are arguments that are passed as values to the ad
 > A rest parameter must be the last parameter in a function definition. This is because the rest parameter collects all the remaining arguments passed to the function, so it doesn't make sense to have any parameters after it.
 
 ${\textsf{\color{khaki}Guess\ the\ output}}$
-
 ```javascript
 const printData = (a, ...numbers, x, y) => {
   console.log(x, y);
@@ -247,7 +242,6 @@ Lexical scoping describes how a parser resolves variable names when functions ar
 - Closures can be used for optimizing the runtime of a function
 
 ${\textsf{\color{khaki}Guess\ the\ output}}$
-
 ```javascript
 for (var i = 0; i < 5; i++) {
   function print(index) {
@@ -300,3 +294,130 @@ createSupplier.field;
 
 - Closure refers to the ability of a function to retain access to variables from its lexical scope even after the scope has been closed
 - Scope refers to the visibility and accessbility of variables within a specified context, such as global scope, function scope or block scope
+
+# Objects
+
+${\textsf{\color{khaki}Guess\ the\ output}}$
+```javascript
+const result = (function (num) {
+  delete num;
+  return num;
+})(5);
+
+console.log(result);
+```
+
+${\textsf{\color{khaki}Guess\ the\ output}}$
+```javascript
+const obj = {
+  a: "one",
+  b: "two",
+  a: "three",
+};
+
+console.log(obj);
+```
+
+${\textsf{\color{khaki}Guess\ the\ output}}$
+```javascript
+const a = {};
+
+const b = {
+  key: "b",
+};
+
+const c = {
+  key: "c",
+};
+
+a[b] = 123;
+a[c] = 456;
+
+console.log(a[b]);
+```
+
+${\textsf{\color{khaki}Guess\ the\ output}}$
+```javascript
+console.log([..."Akshai"]);
+```
+
+${\textsf{\color{khaki}Guess\ the\ output}}$
+```javascript
+const user = {
+  name: "Akshai",
+  age: 28,
+};
+
+const admin = {
+  admin: true,
+  ...user,
+};
+
+console.log(admin);
+```
+
+${\textsf{\color{khaki}Guess\ the\ output}}$
+```javascript
+const settings = {
+  username: "Akshai",
+  level: 19,
+  health: 90,
+};
+
+const data = JSON.stringify(settings, ["level", "health"]);
+
+console.log(data);
+```
+
+${\textsf{\color{khaki}Guess\ the\ output}}$
+```javascript
+const shape = {
+  radius: 10,
+  diameter() {
+    return this.radius * 2;
+  },
+  perimeter: () => {
+    return 2 * Math.PI * this.radius;
+  },
+};
+
+console.log(shape.diameter());
+console.log(shape.perimeter());
+```
+
+${\textsf{\color{khaki}Guess\ the\ output}}$
+```javascript
+function getItems(fruitList, ...args, favouriteFruit) {
+  return [...fruitList, ...args, favouriteFruit];
+}
+
+getItems(["banana", "apple"], "pear", "orange");
+```
+
+${\textsf{\color{khaki}Guess\ the\ output}}$
+```javascript
+let welcome = {
+  greeting: "Hello",
+};
+
+let temp;
+
+temp = welcome;
+
+welcome.greeting = "Hey you!";
+
+console.log(temp.greeting);
+```
+
+${\textsf{\color{khaki}Guess\ the\ output}}$
+```javascript
+let person = {
+  name: "Akshai",
+};
+
+const members = [person];
+
+person = null;
+
+console.log(members);
+```
