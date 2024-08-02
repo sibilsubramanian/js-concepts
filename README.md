@@ -15,7 +15,7 @@ There are three type of scopes:
 
 ### Variable Shadowing
 
-Variable shadowing occues when a variable declared within a certain scope has the same name as a variable declared in an outer scope.
+Variable shadowing occurs when a variable declared within a certain scope has the same name as a variable declared in an outer scope.
 
 ```javascript
 let num = 10;
@@ -50,7 +50,7 @@ This is is known as Illegal Shadowing and it will give the error as ${\textsf{\c
 
 ### Hoisting
 
-When a variable is declared in Javascript, it gets hoisted to the top of its scope, meaning the declaration happens first regardless of where the actual code is.
+When a variable is declared in JavaScript, it gets hoisted to the top of its scope, meaning the declaration happens first regardless of where the actual code is.
 
 📢 NOTES: 
 
@@ -74,9 +74,9 @@ const square = function(num) {
 }
 ```
 
-When you store a function definition inside a varibale, it is called a funtion expression.
+When you store a function definition inside a variable, it is called a funtion expression.
 
-In languages like Javascipt, functions can be treated as any other variables. Functions can be passed as arguments to other functions, can be returned by another function and can be assigned as values to a variable. Such functions are called first-class functions.
+In languages like JavaScript, functions can be treated as any other variables. Functions can be passed as arguments to other functions, can be returned by another function and can be assigned as values to a variable. Such functions are called first-class functions.
 
 
 ${\textsf{\color{khaki}Guess\ the\ output}}$
@@ -176,7 +176,7 @@ A callback function is a function passed into another function as an argument, w
 
 There are two ways in which the callback may be called: synchronous and asynchronous. Synchronous callbacks are called immediately after the invocation of the outer function, with no intervening asynchronous tasks, while asynchronous callbacks are called at some point later, after an asynchronous operation has completed. Examples of synchronous callbacks include the callbacks passed to Array.prototype.map(), Array.prototype.forEach(), etc. Examples of asynchronous callbacks include the callbacks passed to setTimeout() and Promise.prototype.then().
 
-### Arrow function vs Regual function
+### Arrow function vs Regularfunction
 
 The ordinary way of declaring functions in JavaScript is to use the function keyword. 
 
