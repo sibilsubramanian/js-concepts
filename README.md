@@ -785,3 +785,9 @@ secondPromise
   })
   .then(console.log);
 ```
+
+# Debouncing & Throttling
+
+Debouncing limits the execution of a function call and waits for a certain amount of time before running it again.
+
+Throttling is a technique to limit the execution of an event handler function even when this event is triggered continuously due to user actions.
