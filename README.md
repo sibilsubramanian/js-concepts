@@ -649,3 +649,139 @@ setTimeout(() => {
   console.log(data.getStatus.call(this));
 });
 ```
+
+# Promises
+
+The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+
+A Promise is in one of these states:
+- pending: initial state, neither fulfilled nor rejected.
+- fulfilled: meaning that the operation was completed successfully
+- rejected: meaning that the operation failed
+
+```javascript
+const myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("foo");
+  }, 300);
+});
+
+myPromise.then((res) => {
+  console.log(res);
+});
+```
+
+### Promise.all()
+
+We can provide multiple promises to Promise.all(). It will run all the promises in parallel and returns an array with all the fullfilled promises. If any one of the promise fails, it will fail the complete Promise.all() operation.
+
+```javascript
+const promise1 = Promise.resolve(3);
+const promise2 = 42;
+const promise3 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 1000, "foo");
+});
+
+Promise.all([promise1, promise2, promise3]).then((values) => {
+  console.log(values);
+});
+```
+
+### Promise.race()
+
+It returns the first promise that gets fullfilled.
+
+### Promise.allSettled()
+
+It takes multiple promises and returns a single promise, which when fullfilled, will return an array of objects that describe outcome of each promise.
+
+### Promise.any()
+
+It takes an array of promises as input and returns a single Promise. This returned promise fulfills when any of the input's promises fulfills, with this first fulfillment value. It rejects when all of the input's promises reject (including when an empty iterable is passed), with an AggregateError containing an array of rejection reasons.
+
+### Async await
+
+An async function declaration creates an AsyncFunction object. Each time when an async function is called, it returns a new Promise which will be resolved with the value returned by the async function, or rejected with an exception uncaught within the async function.
+
+Await expressions make promise-returning functions behave as though they're synchronous by suspending execution until the returned promise is fulfilled or rejected. The resolved value of the promise is treated as the return value of the await expression.
+
+${\textsf{\color{khaki}Guess\ the\ output}}$
+```javascript
+console.log("start");
+
+const promise1 = new Promise((resolve) => {
+  console.log(1);
+  resolve(2);
+});
+
+promise1.then((res) => {
+  console.log(res);
+});
+
+console.log("end");
+```
+
+${\textsf{\color{khaki}Guess\ the\ output}}$
+```javascript
+console.log("start");
+
+const promise1 = new Promise((resolve) => {
+  console.log(1);
+  console.log(3);
+});
+
+promise1.then((res) => {
+  console.log("Result: ", res);
+});
+
+console.log("end");
+```
+
+${\textsf{\color{khaki}Guess\ the\ output}}$
+```javascript
+function job(state) {
+  return new Promise(function (resolve, reject) {
+    if (state) {
+      resolve("Success");
+    } else {
+      reject("Error");
+    }
+  });
+}
+
+let promise = job(true);
+
+promise
+  .then(function (data) {
+    console.log(data);
+    return job(false);
+  })
+  .catch(function (error) {
+    console.log(error);
+    return "Error caught";
+  })
+  .then(function (data) {
+    console.log(data);
+    return job(true);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+```
+
+${\textsf{\color{khaki}Guess\ the\ output}}$
+```javascript
+const firstPromise = new Promise((resolve, reject) => {
+  resolve("First");
+});
+
+const secondPromise = new Promise((resolve, reject) => {
+  resolve(firstPromise);
+});
+
+secondPromise
+  .then((res) => {
+    return res;
+  })
+  .then(console.log);
+```
