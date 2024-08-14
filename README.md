@@ -807,3 +807,120 @@ See the code for [debouncing function](https://github.com/akshaitr/js-polyfills/
 Throttling is a technique to limit the execution of an event handler function even when this event is triggered continuously due to user actions.
 
 See the code for [throttle function](https://github.com/akshaitr/js-polyfills/blob/main/src/throttle.js)
+
+# Prototypes
+
+JavaScript implements inheritance by using objects. Each object has an internal link to another object called its prototype. That prototype object has a prototype of its own, and so on until an object is reached with null as its prototype.
+
+```javascript
+const myObject = {
+  city: "Madrid",
+  greet() {
+    console.log(`Greetings from ${this.city}`);
+  },
+};
+
+myObject.greet();
+
+myObject.toString();
+```
+
+# Class and constructors
+
+A class is a blueprint that defines the structure and behavior of an object. Objects are instances of a class and possess the properties and methods defined by that class.
+
+```javascript
+class Rectangle {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+
+  calcArea() {
+    return this.height * this.width;
+  }
+}
+
+const rectangle = new Rectangle(4, 5);
+```
+
+lasses in JS are built on prototypes but also have some syntax and semantics that are unique to classes.
+
+```javascript
+function Rectangle(height, width) {
+  this.height = height;
+  this.width = width;
+}
+
+Rectangle.prototype.calcArea = function () {
+  return this.height * this.width;
+};
+```
+
+### Class inheritance
+
+The extends keyword is used in class declarations or class expressions to create a class that is a child of another class.
+
+```javascript
+class Square extends Rectangle {}
+
+Square.prototype.calcParameter = function () {
+  return 2 * (this.height + this.width);
+};
+
+const square = new Square(8, 8);
+
+console.log(square.calcArea());
+
+console.log(square.calcParameter());
+```
+
+### Static properties and methods
+
+Static properties cannot be directly accessed on instances of the class. Instead, they're accessed on the class itself.
+
+Static methods are often utility functions, such as functions to create or clone objects, whereas static properties are useful for caches, fixed-configuration, or any other data you don't need to be replicated across instances.
+
+```javascript
+class ClassWithStaticMethod {
+  static staticProperty = 'someValue';
+  static staticMethod() {
+    return 'static method has been called.';
+  }
+  static {
+    console.log('Class static initialization block called');
+  }
+}
+
+console.log(ClassWithStaticMethod.staticProperty);
+// Expected output: "someValue"
+console.log(ClassWithStaticMethod.staticMethod());
+// Expected output: "static method has been called."
+```
+
+${\textsf{\color{khaki}Guess\ the\ output}}$
+```javascript
+class Employee {
+  constructor() {
+    this.name = "John";
+  }
+
+  constructor() {
+    this.age = 30
+  }
+}
+
+const employee = new Employee();
+
+console.log(employee.name);
+```
+
+📢 NOTES: 
+
+> Defining a function in an object's prototype is better than defining it inside an object because it registers the method in the prototype, making it more memory efficient. When we define a method inside an object, it will create a closure for each instances created for that object.
+
+# Event loop
+
+Event loop in JavaScript is a mechanism responsible for managing asynchronous behavior in a single-threaded environment. It acts like a traffic controller, ensuring tasks are executed in an orderly manner by processing pending taks in queues(microtasks and macrotasks).
+
+Event loop is necessary to handle asynchronous operations in JavaScript effectively. It manages task queues and microtask queues to ensure that tasks are executed efficiently wthout blocking the main thread.
