@@ -802,4 +802,8 @@ secondPromise
 
 Debouncing limits the execution of a function call and waits for a certain amount of time before running it again.
 
+See the code for [debouncing function](https://github.com/akshaitr/js-polyfills/blob/main/src/debounce.js)
+
 Throttling is a technique to limit the execution of an event handler function even when this event is triggered continuously due to user actions.
+
+See the code for [throttle function](https://github.com/akshaitr/js-polyfills/blob/main/src/throttle.js)
