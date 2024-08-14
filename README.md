@@ -1,3 +1,13 @@
+# Topics
+
+1. [Scope](https://github.com/akshaitr/JS-Concepts/blob/main/README.md#scope)
+2. [Functions](https://github.com/akshaitr/JS-Concepts/blob/main/README.md#functions)
+3. [Closures](https://github.com/akshaitr/JS-Concepts/blob/main/README.md#closures)
+4. [Objects](https://github.com/akshaitr/JS-Concepts/blob/main/README.md#objects)
+5. [Binding](https://github.com/akshaitr/JS-Concepts/blob/main/README.md#this-keyword)
+6. [Promises](https://github.com/akshaitr/JS-Concepts/blob/main/README.md#promises)
+7. [Debouncing and throttling](https://github.com/akshaitr/JS-Concepts/blob/main/README.md#debouncing--throttling)
+
 # Scope
 
 A scope is a certain region of a program where a defined variable exist and can be recognized. Beyond that it cannot be recognized.
@@ -484,7 +494,9 @@ let user = {
   user.name = "Akshai";
   ```
 
-# `this` keyword
+# Binding
+
+### Implicit binding - `this` keyword
 
 The this keyword refers to the context where a piece of code, such as a function's body, is supposed to run. Most typically, it is used in object methods, where this refers to the object that the method is attached to, thus allowing the same method to be reused on different objects.
 
@@ -567,7 +579,7 @@ const obj = {
 obj.method(callback, 2, 3);
 ```
 
-# Call, apply and bind
+### Explicit binding - Call, apply and bind
 
 The `call` method in JavaScript is used to invoke a function with a specified `this` context and arguments individually. It accepts the context object as the first argument followed by individual arguments.
 
