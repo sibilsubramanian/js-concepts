@@ -6,7 +6,12 @@
 4. [Objects](https://github.com/akshaitr/JS-Concepts/blob/main/README.md#objects)
 5. [Binding](https://github.com/akshaitr/JS-Concepts/blob/main/README.md#this-keyword)
 6. [Promises](https://github.com/akshaitr/JS-Concepts/blob/main/README.md#promises)
-7. [Debouncing and throttling](https://github.com/akshaitr/JS-Concepts/blob/main/README.md#debouncing--throttling)
+7. [Event Propagation](https://github.com/akshaitr/JS-Concepts/blob/main/README.md#event-propagation)
+8. [Debouncing and throttling](https://github.com/akshaitr/JS-Concepts/blob/main/README.md#debouncing-and-throttling)
+9. [Compose and Pipe](https://github.com/akshaitr/JS-Concepts/blob/main/README.md#compose-and-pipe)
+10. [Prototypes](https://github.com/akshaitr/JS-Concepts/blob/main/README.md#prototypes)
+11. [Classes and constructors](https://github.com/akshaitr/JS-Concepts/blob/main/README.md#class-and-constructors)
+12. [Event Loop](https://github.com/akshaitr/JS-Concepts/blob/main/README.md#event-loop)
 
 # Scope
 
@@ -798,7 +803,39 @@ secondPromise
   .then(console.log);
 ```
 
-# Debouncing & Throttling
+# Event Propagation
+
+The complete process of deciding when and in which direction the event will be executed is called event propagation.
+
+### Event bubbling
+
+The propagation of an event from the innermost taget element to it's outermost ancestor is called event bubbling. The events are executed from bottom up.
+
+📢 NOTES: 
+
+> There are few events that do not bubble, eg: focus(), blur() etc
+
+### Target
+
+`event.target` refers to an element that triggered the event.
+
+`this.target` refers to the element to which the event listener is attached(i.e, the current context).
+
+`event.currentTarget` refers to the element that is currently handling the event during it's bubbling/capturing phase.
+
+### Event capturing (trickling)
+
+Event capturing is the opposite of event bubbling. The event is captured from the outermost element towards the target element. By setting `{ capture: true}`, event listeners are triggered during the capturing phase instead of bubbling phase.
+
+### stopPropagation()
+
+`event.stopPropagation()` prevents the further propagation of an event through the DOM tree.
+
+### Event delegation
+
+A technique where element listens for events on behalf of it's children.
+
+# Debouncing and Throttling
 
 Debouncing limits the execution of a function call and waits for a certain amount of time before running it again.
 
@@ -808,7 +845,7 @@ Throttling is a technique to limit the execution of an event handler function ev
 
 See the code for [throttle function](https://github.com/akshaitr/js-polyfills/blob/main/src/throttle.js)
 
-# Compose & Pipe
+# Compose and Pipe
 
 Compose and pipe are higher order functions used in JavaScript for function composition.
 
