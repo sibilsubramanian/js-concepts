@@ -808,6 +808,18 @@ Throttling is a technique to limit the execution of an event handler function ev
 
 See the code for [throttle function](https://github.com/akshaitr/js-polyfills/blob/main/src/throttle.js)
 
+# Compose & Pipe
+
+Compose and pipe are higher order functions used in JavaScript for function composition.
+
+Compose takes multiple functions as arguments and return a new function that applies these functions from right to left.
+
+See the code for [compose function](https://github.com/akshaitr/js-polyfills/blob/main/src/compose.js)
+
+Pipe, on the other hand, applies the functions from left to right.
+
+See the code for [pipe function](https://github.com/akshaitr/js-polyfills/blob/main/src/pipe.js)
+
 # Prototypes
 
 JavaScript implements inheritance by using objects. Each object has an internal link to another object called its prototype. That prototype object has a prototype of its own, and so on until an object is reached with null as its prototype.
@@ -824,6 +836,58 @@ myObject.greet();
 
 myObject.toString();
 ```
+
+### Prototype inheritance
+
+Constructor functions in JavaScript are used to create an object with specific properties and methods.
+
+```javascript
+function Box(value) {
+  this.value = value;
+}
+
+Box.prototype.getValue = function () {
+  return this.value;
+};
+
+const box1 = new Box(1);
+```
+
+Constructors are functions called with `new`. When a function is called with the `new` keyword, it will do the following things:
+  - Creates a blank, plain JavaScript object i.e., a new instance
+  - Points the prototype of the new instance to the constructor function's prototype
+  - Executes the constructor function with the given arguments, binding the new instance as `this` context
+
+### __proto__ vs prototype
+
+__proto__ is an object property that points to the prototype of that object. It is used for inheritance and allows accessing the prototype chain.
+
+prototype is a property that exist on the constructor function and is used to set an inheritance for the object created by the constructor function. It is used to define shared properties and methods for instances.
+
+### setPrototypeOf()
+
+A method used to set the prototype of a specified object to another object or null. It allows changing the prototype dynamically after an object has been created.
+
+```javascript
+const user = {
+  name: "Akshai",
+  age: 28,
+};
+
+const adminUser = { isAdmin: true };
+
+console.log(user.isAdmin);
+// Expected output: undefined
+
+Object.setPrototypeOf(user, adminUser);
+
+console.log(user.isAdmin);
+// Expected output: true
+```
+
+### instanceof
+
+An operator that checks if an object is an instance of a specific constructor or it's prototype chain. It returns true if the object is an instance of the constructor or a constructor's prototype chain.
 
 # Class and constructors
 
