@@ -4,7 +4,7 @@
 2. [Functions](https://github.com/akshaitr/JS-Concepts/blob/main/README.md#functions)
 3. [Closures](https://github.com/akshaitr/JS-Concepts/blob/main/README.md#closures)
 4. [Objects](https://github.com/akshaitr/JS-Concepts/blob/main/README.md#objects)
-5. [Binding](https://github.com/akshaitr/JS-Concepts/blob/main/README.md#this-keyword)
+5. [Binding](https://github.com/akshaitr/JS-Concepts/blob/main/README.md#binding)
 6. [Promises](https://github.com/akshaitr/JS-Concepts/blob/main/README.md#promises)
 7. [Event Propagation](https://github.com/akshaitr/JS-Concepts/blob/main/README.md#event-propagation)
 8. [Debouncing and throttling](https://github.com/akshaitr/JS-Concepts/blob/main/README.md#debouncing-and-throttling)
