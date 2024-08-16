@@ -15,8 +15,8 @@
 
 # Scope
 
-A scope is a certain region of a program where a defined variable exist and can be recognized. Beyond that it cannot be recognized.
-There are three type of scopes:
+A scope is a certain region of a program where a defined variable exists and can be recognized. Beyond that it cannot be recognized.
+There are three types of scopes:
 - Global scope
 - Function scope
 - Block scope
@@ -52,7 +52,7 @@ if(true) {
   var num = 20;
 }
 ```
-This is is known as Illegal Shadowing and it will give the error as ${\textsf{\color{orange}variable\ is\ already\ defined}}$.
+This is is known as illegal shadowing and it will give the error as ${\textsf{\color{orange}variable\ is\ already\ defined}}$.
 
 ### Declaration
 
@@ -89,7 +89,7 @@ const square = function(num) {
 }
 ```
 
-When you store a function definition inside a variable, it is called a funtion expression.
+When you store a function definition inside a variable, it is called a function expression.
 
 In languages like JavaScript, functions can be treated as any other variables. Functions can be passed as arguments to other functions, can be returned by another function and can be assigned as values to a variable. Such functions are called first-class functions.
 
