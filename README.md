@@ -688,6 +688,9 @@ myPromise.then((res) => {
 });
 ```
 
+[Polyfill for Promise](https://github.com/akshaitr/js-polyfills/edit/main/src/promise.js)
+Reference: [Polyfill for Javascript Promise](https://medium.com/@manojsingh047/polyfill-for-javascript-promise-81053b284e37)
+
 ### Promise.all()
 
 We can provide multiple promises to Promise.all(). It will run all the promises in parallel and returns an array with all the fullfilled promises. If any one of the promise fails, it will fail the complete Promise.all() operation.
@@ -703,6 +706,8 @@ Promise.all([promise1, promise2, promise3]).then((values) => {
   console.log(values);
 });
 ```
+
+[Polyfill for Promise.all()](https://github.com/akshaitr/js-polyfills/blob/main/src/allPromise.js)
 
 ### Promise.race()
 
@@ -845,6 +850,11 @@ Throttling is a technique to limit the execution of an event handler function ev
 
 See the code for [throttle function](https://github.com/akshaitr/js-polyfills/blob/main/src/throttle.js)
 
+### Debouncing vs Throttling: Key Differences
+
+- Execution Frequency: Debouncing postpones the execution until after a period of inactivity, while throttling limits the execution to a fixed number of times over an interval.
+- Use Cases: Debouncing is ideal for tasks that don’t need to execute repeatedly in quick succession, such as API calls based on user input. Throttling is suited for controlling the execution rate of functions called in response to events like scrolling or resizing.
+
 # Compose and Pipe
 
 Compose and pipe are higher order functions used in JavaScript for function composition.
@@ -894,6 +904,12 @@ Constructors are functions called with `new`. When a function is called with the
   - Creates a blank, plain JavaScript object i.e., a new instance
   - Points the prototype of the new instance to the constructor function's prototype
   - Executes the constructor function with the given arguments, binding the new instance as `this` context
+
+📢 NOTES: 
+
+> To be a constructor, a function object must have a [[Construct]] internal method.
+Functions created with the function keyword are constructors, as are some built-in functions such as Date. These are the functions you can use with new.
+Other function objects do not have a [[Construct]] internal method. These include arrow functions. So you can't use new with these. This makes sense since you can't set the this value of an arrow function.
 
 ### __proto__ vs prototype
 
