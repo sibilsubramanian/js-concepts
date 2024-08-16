@@ -498,6 +498,12 @@ let user = {
   const clonedUser = JSON.parse(JSON.stringify(user));
   user.name = "Akshai";
   ```
+- Using structuredClone() global function
+  ```javascript
+  const clonedUser = structuredClone(user)
+  ```
+
+[Polyfill for deep clone](https://github.com/akshaitr/js-polyfills/blob/main/src/deepClone.js)
 
 # Binding
 
