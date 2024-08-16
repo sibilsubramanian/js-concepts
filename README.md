@@ -820,7 +820,7 @@ The complete process of deciding when and in which direction the event will be e
 
 ### Event bubbling
 
-The propagation of an event from the innermost taget element to it's outermost ancestor is called event bubbling. The events are executed from bottom up.
+The propagation of an event from the innermost target element to it's outermost ancestor is called event bubbling. The events are executed from bottom up.
 
 📢 NOTES: 
 
