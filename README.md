@@ -917,9 +917,9 @@ Constructors are functions called with `new`. When a function is called with the
 Functions created with the function keyword are constructors, as are some built-in functions such as Date. These are the functions you can use with new.
 Other function objects do not have a [[Construct]] internal method. These include arrow functions. So you can't use new with these. This makes sense since you can't set the this value of an arrow function.
 
-### __proto__ vs prototype
+### `__proto__` vs prototype
 
-__proto__ is an object property that points to the prototype of that object. It is used for inheritance and allows accessing the prototype chain.
+`__proto__` is an object property that points to the prototype of that object. It is used for inheritance and allows accessing the prototype chain.
 
 prototype is a property that exist on the constructor function and is used to set an inheritance for the object created by the constructor function. It is used to define shared properties and methods for instances.
 
