@@ -967,7 +967,7 @@ class Rectangle {
 const rectangle = new Rectangle(4, 5);
 ```
 
-lasses in JS are built on prototypes but also have some syntax and semantics that are unique to classes.
+Classes in JS are built on prototypes but also have some syntax and semantics that are unique to classes.
 
 ```javascript
 function Rectangle(height, width) {
