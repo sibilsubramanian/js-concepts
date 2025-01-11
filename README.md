@@ -569,6 +569,8 @@ const obj = {
 };
 
 obj.method(callback);
+
+obj.method(callback.bind(obj));
 ```
 
 ${\textsf{\color{khaki}Guess\ the\ output}}$
