@@ -491,12 +491,12 @@ let user = {
 - Using Object.assign() method
   ```javascript
   const clonedUser = Object.assign({}, user);
-  user.name = "Akshai";
+  clonedUser.name = "Akshai";
   ```
 - Using JSON.parse() and JSON.stringify()
   ```javascript
   const clonedUser = JSON.parse(JSON.stringify(user));
-  user.name = "Akshai";
+  clonedUser.name = "Akshai";
   ```
 - Using structuredClone() global function
   ```javascript
