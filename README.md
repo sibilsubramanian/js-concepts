@@ -205,7 +205,45 @@ const sayHello = (name) => {
 ```
 
 - We can access all the arguments passed to a regular function using the `arguments` object. To access the arguments passed to an arrow function, we can use the rest parameter syntax (`...`).
+```javascript
+function regularFunc() {
+  console.log(arguments);
+}
+
+regularFunc(1, 2, 3);
+```
+```javascript
+const arrowFunc = () => {
+  console.log(arguments); // ❌ ReferenceError
+};
+
+arrowFunc(1, 2, 3);
+```  
 - When a regular function has duplicate names in the parameters, the last parameter with the duplicate name will take precedence. But in "strict mode", using a duplicate named parameter will result in a syntax error. Arrow functions don't allow for the same parameter name to be used more than once in the parameter list. Doing so will result in a syntax error.
+
+```javascript
+function demo(a, b, a) {
+  console.log(a); // Logs the second 'a'
+}
+
+demo(1, 2, 3);
+```
+```javascript
+"use strict";
+
+function demo(a, b, a) {
+  console.log(a);
+}
+```
+```javascript
+const demo = (a, b, a) => {
+  console.log(a);
+};
+```
+Why?
+Arrow functions are always in strict mode, implicitly.
+Duplicate parameter names are not allowed.
+
 - Regular functions are hoisted to the top. And you can access and call them even before they are declared. Arrow functions, on the other hand, cannot be accessed before they are initialised.
 - Regular functions have their own `this` context. And this is determined dynamically depending on how you call or execute the function. Arrow functions, on the other hand, do not have their own `this` context. Instead, they capture the `this` value from the surrounding lexical context in which the arrow function was created.
 - For regular functions, you can create a new instance using the `new` keyword. And this sets the `this` value to the new instance you've created. For arrow functions, you cannot use them as constructors. This is because the value of `this` in arrow functions is lexically scoped – that is, determined by the surrounding execution context. This behaviour does not make them suitable to be used as constructors.
