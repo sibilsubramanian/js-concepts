@@ -245,6 +245,33 @@ Arrow functions are always in strict mode, implicitly.
 Duplicate parameter names are not allowed.
 
 - Regular functions are hoisted to the top. And you can access and call them even before they are declared. Arrow functions, on the other hand, cannot be accessed before they are initialised.
+```javascript
+function Timer() {
+  this.seconds = 0;
+
+  // Regular function — loses `this`
+  setInterval(function () {
+    this.seconds++; // ❌ `this` is now window (or undefined)
+    console.log(this.seconds);
+  }, 1000);
+}
+
+new Timer();
+
+const person = {
+  name: "Alice",
+  regularFunc: function () {
+    console.log("Regular:", this.name);
+  },
+  arrowFunc: () => {
+    console.log("Arrow:", this.name);
+  }
+};
+
+person.regularFunc(); // "Regular: Alice"
+person.arrowFunc();   // "Arrow: undefined" (or global value)
+
+```
 - Regular functions have their own `this` context. And this is determined dynamically depending on how you call or execute the function. Arrow functions, on the other hand, do not have their own `this` context. Instead, they capture the `this` value from the surrounding lexical context in which the arrow function was created.
 - For regular functions, you can create a new instance using the `new` keyword. And this sets the `this` value to the new instance you've created. For arrow functions, you cannot use them as constructors. This is because the value of `this` in arrow functions is lexically scoped – that is, determined by the surrounding execution context. This behaviour does not make them suitable to be used as constructors.
 
@@ -261,8 +288,99 @@ And you can use arrow functions in any of the following cases:
 📢 NOTES: 
 
 > In programming, a function is a block of reusable code that performs a certain task. Functions can take input arguments and return output values. On the other hand, a method is a function that is associated with an object in object-oriented programming. Methods are functions that are called on objects and can modify or access the object's properties.
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Function Prototype Chain Viewer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .box {
+      margin: 10px 0;
+      padding: 10px;
+      border: 2px solid #333;
+      border-radius: 8px;
+      background-color: #f0f0f0;
+    }
+    .arrow {
+      font-size: 24px;
+      text-align: center;
+    }
+    code {
+      background: #eee;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
 
-# Closures
+  <h2>🔍 JavaScript Function Prototype Chain Viewer</h2>
+
+  <div class="box">
+    <strong>Step 1:</strong> A function is declared:
+    <br>
+    <code>function greet() { console.log("Hello"); }</code>
+  </div>
+
+  <div class="arrow">↓</div>
+
+  <div class="box">
+    <strong>Step 2:</strong> <code>greet.__proto__</code> points to:
+    <br>
+    <code>Function.prototype</code> → shared methods like <code>call()</code>, <code>bind()</code>
+  </div>
+
+  <div class="arrow">↓</div>
+
+  <div class="box">
+    <strong>Step 3:</strong> <code>Function.prototype.__proto__</code> is:
+    <br>
+    <code>Object.prototype</code> → generic object methods like <code>toString()</code>, <code>hasOwnProperty()</code>
+  </div>
+
+  <div class="arrow">↓</div>
+
+  <div class="box">
+    <strong>Step 4:</strong> <code>Object.prototype.__proto__</code> is:
+    <br>
+    <code>null</code> (End of the chain)
+  </div>
+
+  <h3>🧪 Live Console Output:</h3>
+  <pre id="output"></pre>
+
+  <script>
+    function greet() {
+      console.log("Hello");
+    }
+
+    const output = document.getElementById("output");
+
+    output.innerText += `typeof greet: ${typeof greet}\n`;
+    output.innerText += `greet instanceof Function: ${greet instanceof Function}\n`;
+    output.innerText += `greet instanceof Object: ${greet instanceof Object}\n\n`;
+
+    output.innerText += `Object.getPrototypeOf(greet) === Function.prototype: ${
+      Object.getPrototypeOf(greet) === Function.prototype
+    }\n`;
+
+    output.innerText += `Function.prototype.__proto__ === Object.prototype: ${
+      Function.prototype.__proto__ === Object.prototype
+    }\n`;
+
+    output.innerText += `Object.prototype.__proto__ === null: ${
+      Object.prototype.__proto__ === null
+    }\n`;
+  </script>
+
+</body>
+</html>
+```
+# Closures(Function + its lexical environment = Closure)
 
 A closure is a JavaScript feature that allows a function to remember and access its lexical scope even when the function is executed outside that scope.
 
@@ -286,7 +404,46 @@ init();
 ### Lexical Scope
 
 Lexical scoping describes how a parser resolves variable names when functions are nested. The word lexical refers to the fact that lexical scoping uses the location where a variable is declared within the source code to determine where that variable is available. Nested functions have access to variables declared in their outer scope.
+```javascript
+function outer() {
+  const secret = "12345";
 
+  function inner() {
+    const secret = "54321";
+    console.log(secret); // Logs: 54321
+  }
+
+  inner();
+}
+
+outer();
+```
+```
+┌──────────────────────────────┐
+│    Global Lexical Env        │
+│  ──────────────────────────  │
+│  a = 10                      │
+│  outer()                     │
+│  Outer: null                 │
+└────────────┬────────────────┘
+             │
+             ▼
+┌──────────────────────────────┐
+│    outer() Lexical Env       │
+│  ──────────────────────────  │
+│  b = 20                      │
+│  inner()                     │
+│  Outer: Global Env           │
+└────────────┬────────────────┘
+             │
+             ▼
+┌──────────────────────────────┐
+│    inner() Lexical Env       │
+│  ──────────────────────────  │
+│  c = 30                      │
+│  Outer: outer() Env          │
+└──────────────────────────────┘
+```
 ### Why do we need closures?
 
 - Closures makes it possible for functions to have private variables
