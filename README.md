@@ -1144,7 +1144,15 @@ console.log(user.isAdmin);
 ### instanceof
 
 An operator that checks if an object is an instance of a specific constructor or it's prototype chain. It returns true if the object is an instance of the constructor or a constructor's prototype chain.
+```text
+Function: Person
+ └── .prototype → { sayHello }
 
+Object: p1 (created using new Person())
+ └── .__proto__ → Person.prototype
+                         └── .__proto__ → Object.prototype
+
+```
 # Class and constructors
 
 A class is a blueprint that defines the structure and behavior of an object. Objects are instances of a class and possess the properties and methods defined by that class.
