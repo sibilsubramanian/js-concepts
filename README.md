@@ -1042,6 +1042,24 @@ Event capturing is the opposite of event bubbling. The event is captured from th
 ### Event delegation
 
 A technique where element listens for events on behalf of it's children.
+```html
+<ul id="fruits">
+  <li>Apple</li>
+  <li>Banana</li>
+  <li>Orange</li>
+</ul>
+
+<script>
+  const fruits = document.getElementById("fruits");
+
+  fruits.addEventListener("click", function(e) {
+    if (e.target.tagName === "LI") {   // check if <li> was clicked
+      console.log("You clicked:", e.target.innerText);
+    }
+  });
+</script>
+```
+
 
 # Debouncing and Throttling
 
